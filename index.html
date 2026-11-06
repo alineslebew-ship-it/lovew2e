@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f8f1e7">
-  <title>A World Made With Love</title>
+  <title>A Page for You</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +26,7 @@
       --muted: #91847d;
       --line: #e8ddd0;
       --shadow: 0 15px 40px rgba(93, 72, 58, .09);
+
       --serif: "Fraunces", Georgia, serif;
       --sans: "DM Sans", sans-serif;
       --hand: "Caveat", cursive;
@@ -70,7 +71,7 @@
       overflow: hidden;
     }
 
-    /* INTRO SCREEN */
+    /* INTRO */
 
     .intro-screen {
       position: fixed;
@@ -97,8 +98,14 @@
     }
 
     @keyframes introAppear {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .intro-art {
@@ -290,18 +297,36 @@
       transform: rotate(7deg);
     }
 
+    /* STARS: SLOW AND GENTLE */
+
     .floating-star {
       position: absolute;
       color: #c28b84;
       font-size: 28px;
-      animation: float 3s ease-in-out infinite;
+      animation: gentleFloat 5s ease-in-out infinite;
+      will-change: transform;
+      pointer-events: none;
     }
 
-    .star-one { top: 10%; left: 10%; }
-    .star-two { bottom: 13%; right: 9%; animation-delay: .8s; }
+    .star-one {
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
 
-    @keyframes float {
-      50% { transform: translateY(-12px) rotate(12deg); }
+    .star-two {
+      bottom: 13%;
+      right: 9%;
+      animation-delay: 2s;
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
     }
 
     .scroll-hint {
@@ -418,7 +443,8 @@
       transition: .25s;
     }
 
-    .mood-card:hover, .mood-card.active {
+    .mood-card:hover,
+    .mood-card.active {
       background: var(--paper);
       transform: translateY(-5px);
       box-shadow: var(--shadow);
@@ -521,8 +547,14 @@
     }
 
     @keyframes appear {
-      from { opacity: 0; transform: translateY(12px) rotate(-1deg); }
-      to { opacity: 1; transform: translateY(0) rotate(-1deg); }
+      from {
+        opacity: 0;
+        transform: translateY(12px) rotate(-1deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) rotate(-1deg);
+      }
     }
 
     /* MINI MUSIC PLAYER */
@@ -594,6 +626,8 @@
       color: var(--muted);
     }
 
+    /* RESPONSIVE */
+
     @media (max-width: 760px) {
       .section {
         padding-top: 70px;
@@ -663,9 +697,11 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
+        animation: none !important;
         transition-duration: .01ms !important;
       }
     }
@@ -722,18 +758,19 @@
         </svg>
       </div>
 
-      <span class="eyebrow">A SMALL THING, MADE WITH CARE</span>
+      <span class="eyebrow">A PAGE MADE JUST FOR YOU</span>
       <h1>Hey,<br>this is <em>for you.</em></h1>
       <p>
-        Sooo, I made something. It's not much, but I put
-        a lot of thought into it. Take your time and have a look around.
+        Okay, so... I made you a thing.
+        Nothing fancy, just a page full of stuff I wanted you to see.
+        Go on, have a look!
       </p>
 
       <button class="primary-btn" id="enterBtn">
         Come on in <span>↗</span>
       </button>
 
-      <div class="intro-hint">♪ press to enter with music</div>
+      <div class="intro-hint">♪ there's music inside</div>
     </div>
   </div>
 
@@ -775,11 +812,12 @@
       <!-- HERO -->
       <section class="section hero" id="home">
         <div class="hero-copy">
-          <span class="eyebrow">A small thing, made with care</span>
+          <span class="eyebrow">Well, look who's here</span>
           <h1>Hey,<br>this is <em>for you.</em></h1>
           <p>
-            Sooo, I made something. It's not much, but I put
-            a lot of thought into it. Take your time and have a look around.
+            I know, I know. A whole website? Pretty extra, huh?
+            But I had some things to say, so here we are.
+            Make yourself comfy.
           </p>
           <button class="primary-btn" onclick="scrollToSection('letter')">
             Let's take a look <span>↗</span>
@@ -789,7 +827,7 @@
         <div class="hero-art">
           <span class="floating-star star-one">✳</span>
           <span class="floating-star star-two">✧</span>
-          <div class="floating-note">made just for you!</div>
+          <div class="floating-note">hey, you!</div>
 
           <svg viewBox="0 0 500 430" role="img" aria-label="A whimsical storybook landscape with a little house and flowers">
             <ellipse cx="255" cy="370" rx="180" ry="18" fill="#8b9b83" opacity=".16"/>
@@ -838,14 +876,14 @@
         </div>
       </section>
 
-      <div class="scroll-hint">keep going, there's more ↓</div>
+      <div class="scroll-hint">psst... there's more ↓</div>
 
       <!-- LETTER -->
       <section class="section letter-section" id="letter">
-        <span class="eyebrow">A note from me</span>
-        <h2 class="section-title">Things I wanted<br>to tell you.</h2>
+        <span class="eyebrow">Okay, hear me out</span>
+        <h2 class="section-title">A few things<br>I wanna say.</h2>
         <p class="section-description" style="margin-left:auto;margin-right:auto">
-          No big speech. Just a few things I hope you never forget.
+          Don't worry, it's not a long speech. Promise.
         </p>
 
         <article class="letter-card">
@@ -856,18 +894,18 @@
 
           <div class="letter-content">
             <div class="greeting">Hi, you!</div>
-            I don't really know where to start, honestly.
+            I was trying to figure out how to start this, but honestly? I have no idea. So let's just go with this.
 
-            But I guess I just want you to know how much you mean to me. I'm glad our paths crossed, and I'm glad I get to know you.
+            I'm really glad I got to know you. Like, genuinely. Somehow, having you around makes ordinary days feel a bit more fun.
 
-            I hope you never feel like you have to be perfect around me. You can be silly, quiet, tired, messy, or just not in the mood. You don't have to pretend everything's okay.
+            And hey, you don't have to be in a good mood all the time. You don't have to act okay when you're not, either. You can talk about random things, complain about your day, or just be quiet. That's fine with me.
 
-            And even on the days when you don't feel like your best self, I hope you remember that you're still someone worth loving.
+            I hope you give yourself a little more credit. You're doing better than you think, and you deserve good things too.
 
-            I'm really, really glad you're here.
+            Anyway, that's all I wanted to say. Just wanted you to know that I'm glad you're here.
           </div>
 
-          <div class="letter-sign">with all my heart, ♡</div>
+          <div class="letter-sign">that's all for now, ♡</div>
 
           <svg class="letter-decoration" viewBox="0 0 100 100" aria-hidden="true">
             <path d="M50 88 C-12 45 16 0 50 29 C84 0 112 45 50 88Z" fill="#e5aeb5"/>
@@ -879,10 +917,10 @@
       <!-- COMFORT -->
       <section class="comfort-section" id="comfort">
         <div class="comfort-inner">
-          <span class="eyebrow">For whatever kind of day it is</span>
-          <h2 class="section-title">How are you<br>feeling today?</h2>
+          <span class="eyebrow">Let's check in</span>
+          <h2 class="section-title">What's the<br>mood today?</h2>
           <p class="section-description" style="margin-left:auto;margin-right:auto">
-            Pick one. I've got something to say.
+            Pick one. No wrong answers here.
           </p>
 
           <div class="mood-grid">
@@ -904,7 +942,7 @@
                 <path d="M20 34 Q25 37 30 34" fill="none" stroke="#8e7857" stroke-width="2.5" stroke-linecap="round"/>
                 <path d="M38 9 L42 4 M42 17 L48 16" stroke="#d3ad62" stroke-width="2" stroke-linecap="round"/>
               </svg>
-              <span>I'm exhausted</span>
+              <span>So tired</span>
             </button>
 
             <button class="mood-card" data-mood="miss" type="button">
@@ -913,7 +951,7 @@
                 <path d="M18 23 Q21 20 23 23 M27 23 Q30 20 33 23" fill="none" stroke="#996b72" stroke-width="2" stroke-linecap="round"/>
                 <path d="M21 31 Q25 35 29 31" fill="none" stroke="#996b72" stroke-width="2" stroke-linecap="round"/>
               </svg>
-              <span>I miss you</span>
+              <span>Missing you</span>
             </button>
 
             <button class="mood-card" data-mood="happy" type="button">
@@ -923,14 +961,14 @@
                 <path d="M18 32 Q25 40 32 32" fill="none" stroke="#718667" stroke-width="2.5" stroke-linecap="round"/>
                 <path d="M7 11 L10 7 M40 12 L44 8" stroke="#91a982" stroke-width="2" stroke-linecap="round"/>
               </svg>
-              <span>I'm doing great!</span>
+              <span>Pretty good!</span>
             </button>
 
           </div>
 
           <div class="comfort-message" id="comfortMessage" aria-live="polite">
-            <p id="comfortText">Choose whatever feels closest to you.</p>
-            <small id="comfortSub">I'm listening. ♡</small>
+            <p id="comfortText">Pick one and see what I've got for you.</p>
+            <small id="comfortSub">I'm all ears. ♡</small>
           </div>
         </div>
       </section>
@@ -938,20 +976,20 @@
       <!-- ENDING -->
       <section class="ending" id="ending">
         <div class="ending-inner">
-          <span class="eyebrow">Before you go</span>
-          <h2>One more<br>thing...</h2>
+          <span class="eyebrow">Before you leave</span>
+          <h2>Okay, one<br>last thing.</h2>
           <p>
-            I could probably write a hundred more paragraphs,
-            but I'll save that for another day.
-            For now, just remember this:
+            You've made it to the end! I hope you had fun
+            looking around. I saved one more thing for you,
+            so don't leave just yet.
           </p>
 
           <button class="primary-btn" id="finalBtn" type="button">
-            One last thing <span>♡</span>
+            What is it? <span>♡</span>
           </button>
 
           <div class="final-note" id="finalNote">
-            You're loved. More than you know. And that's that. ♡
+            Just so you know, you're pretty special to me. That's it. No take-backs. ♡
           </div>
         </div>
       </section>
@@ -959,7 +997,7 @@
     </main>
 
     <footer>
-      made with care, and a whole lot of love ♡
+      okay, that's enough from me. bye! ♡
     </footer>
 
   </div>
@@ -987,7 +1025,6 @@
       if (entered) return;
       entered = true;
 
-      // Start audio directly from the user's click
       try {
         await audio.play();
         musicStatus.textContent = "now playing";
@@ -1044,23 +1081,26 @@
       musicStatus.textContent = "audio unavailable";
     });
 
-    // Comfort spot
+    // Comfort messages
     const messages = {
       sad: {
-        text: "Hey, it's okay to have a bad day. You don't have to figure everything out right now. Take a breath. I'm rooting for you, always.",
-        sub: "One step at a time, okay? ♡"
+        text: "Ugh, some days just suck. And that's okay. You don't have to fix your whole life today. Take it slow, get yourself something nice, and be a little kinder to yourself.",
+        sub: "Tomorrow is another day. You've got this. ♡"
       },
+
       tired: {
-        text: "You've done enough for today. Seriously. It's okay to slow down, take a break, and do absolutely nothing for a while.",
-        sub: "Go get some rest. You deserve it."
+        text: "Hey, take a break. Seriously. You don't need to be productive every second of the day. Put everything aside for a bit and get some proper rest.",
+        sub: "The to-do list can wait. Go recharge!"
       },
+
       miss: {
-        text: "Well, I wish I could be there right now. Until then, consider this your reminder that someone is thinking about you.",
-        sub: "Sending you the biggest virtual hug. ♡"
+        text: "Wish I could teleport over there right now. Since that's sadly not an option, here's a reminder that you're on someone's mind. A lot, actually.",
+        sub: "Sending you a whole lot of love. ♡"
       },
+
       happy: {
-        text: "WAIT, that's so good!! I hope you get a hundred more days like this. You deserve all the good things happening to you.",
-        sub: "Keep that smile around, please."
+        text: "OKAYYY, I LOVE THAT FOR YOU!! Tell me everything. I hope you get to have more days like this, because honestly, you deserve them.",
+        sub: "Please keep having reasons to smile!"
       }
     };
 
@@ -1095,8 +1135,8 @@
       finalNote.classList.toggle("show");
 
       finalBtn.innerHTML = finalNote.classList.contains("show")
-        ? "That's all ♡"
-        : 'One last thing <span>♡</span>';
+        ? "Aww, okay ♡"
+        : 'What is it? <span>♡</span>';
     });
   </script>
 
